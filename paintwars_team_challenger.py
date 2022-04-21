@@ -206,15 +206,11 @@ def step(robotId, sensors):
         rotation = -0.5
     elif (wall_detected_front and wall_detected_front_left) or (wall_detected_left and wall_detected_front_left):
         rotation = 0.5
-      
     elif wall_detected_front_right:
         rotation = -0.25
     elif  wall_detected_front_left or wall_detected_front:
         rotation = 0.25
-    elif  (wall_detected_right and wall_detected_back_right):
-        rotation = -0.25     
-    elif (wall_detected_left and wall_detected_back_left):    
-        rotation = 0.25      
+    
     elif not wall_detected_front_left and  wall_detected_left and not wall_detected_back_left: #longe les murs et rentre si il y a une ouverture à gauche
         rotation = -0.25
     elif not wall_detected_front_left and  wall_detected_left :#permet d'eviter le blocage 
@@ -223,8 +219,15 @@ def step(robotId, sensors):
         rotation = 0.25
     elif not wall_detected_front_right and  wall_detected_right :#permet d'eviter le blocage
         rotation = -0.25
-    
-    
+
+    elif  (wall_detected_right and wall_detected_back_right):
+        rotation = -0.25     
+    elif (wall_detected_left and wall_detected_back_left):    
+        rotation = 0.25      
+    elif (wall_detected_left):
+        rotation = 0.25
+    elif (wall_detected_right):
+        rotation = -0.25
     
 
     
